@@ -9,7 +9,26 @@ require("@rails/activestorage").start()
 require("channels")
 require("jquery")
 $( document ).ready(function() {
-    console.log("READY");
+    $('#open_grah_form').submit((event)=>{
+        event.preventDefault();
+        const url = $('#open_graph_form_input').val();
+        const postObject = {
+            url,
+        };
+        $.ajax({
+            url: "http://localhost:3000/url",
+            data: JSON.stringify(postObject),
+            contentType: "application/json; charset=utf-8",
+            traditional: true,
+            type: "POST",
+            success: function() {
+                console.log("Hello");
+            },
+            error:function(error) {
+                console.log(`There was an error Posting to /url status: ${error.status} message: ${error.responseText}`);
+            }
+        });
+    });
 });
 
 
