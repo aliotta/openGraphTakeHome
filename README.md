@@ -11,3 +11,4 @@
 - Action cable requires redis for production
 - Make the api and client handle errors in a more robust way. Errors that come to mind include validation errors and database connection errors.
 - Fully unit test the app and api.
+- Handle socket disconnections
