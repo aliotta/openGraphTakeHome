@@ -13,8 +13,9 @@ $( document ).ready(function() {
         event.preventDefault();
         const url = $('#open_graph_form_input').val();
         const postObject = {
-            url,
+            url: url,
         };
+        console.log("HUH", JSON.stringify(postObject), postObject)
         $.ajax({
             url: "http://localhost:3000/url",
             data: JSON.stringify(postObject),
