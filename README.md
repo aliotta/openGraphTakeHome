@@ -1,31 +1,13 @@
 # README
 
-createuser open_graph -W -s
-type password1
+## SETUP
+- Create the postgres user ```createuser open_graph -W -s``` then type password1
+- Create database ```rake db:setup```
+- Start the server ```rails server```
+- Open app in browser at url localhost:3000
 
-rake db:setup
 
-rails db:migrate
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## TODO Before Production Ready
+- Action cable requires redis for production
+- Make the api and client handle errors in a more robust way. Errors that come to mind include validation errors and database connection errors.
+- Fully unit test the app and api.

@@ -14,7 +14,6 @@ class OpenGraphController < ApplicationController
                 else
                     puts "not found"
                 end
-                #extract_metadata(dom, "og:image")
             end
         end
     end
