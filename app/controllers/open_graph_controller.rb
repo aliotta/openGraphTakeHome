@@ -7,9 +7,10 @@ class OpenGraphController < ApplicationController
         Thread.new do
             Rails.application.executor.wrap do
                 page = Nokogiri::HTML(open(params[:url]))
-
-                metatag = page.at('meta[name="og:image"]')
-                if metatag then puts metatag['content']
+                puts page
+                metatag = page.at('meta[property="og:image"]')
+                if metatag and metatag['content']
+                    ActiveRecord::Base.connection.execute("INSERT INTO open_graph_image (url) values ('#{ActiveRecord::Base.sanitize_sql(metatag['content'])}');")
                 else
                     puts "not found"
                 end
