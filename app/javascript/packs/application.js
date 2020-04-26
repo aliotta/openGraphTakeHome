@@ -15,7 +15,7 @@ $( document ).ready(function() {
         const postObject = {
             url: url,
         };
-        console.log("HUH", JSON.stringify(postObject), postObject)
+        
         $.ajax({
             url: "http://localhost:3000/url",
             data: JSON.stringify(postObject),
