@@ -29,10 +29,9 @@ $( document ).ready(function() {
             type: "POST",
             success: function() {
                 console.log("Successfully posted image");
-                // TODO add a spinner
             },
             error:function(error) {
-                $(".loader").show();
+                $(".loader").hide();
                 alert(`There was an error Posting to /url status: ${error.status} message: ${error.responseText}`);
             }
         });
