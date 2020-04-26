@@ -8,14 +8,19 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("jquery")
+
 $( document ).ready(function() {
+    $(".loader").hide();
+    $("#open_graph_image").hide();
+
     $('#open_grah_form').submit((event)=>{
         event.preventDefault();
+        $(".loader").show();
         const url = $('#open_graph_form_input').val();
         const postObject = {
             url: url,
         };
-        
+
         $.ajax({
             url: "http://localhost:3000/url",
             data: JSON.stringify(postObject),
@@ -23,10 +28,12 @@ $( document ).ready(function() {
             traditional: true,
             type: "POST",
             success: function() {
-                console.log("Hello");
+                console.log("Successfully posted image");
+                // TODO add a spinner
             },
             error:function(error) {
-                console.log(`There was an error Posting to /url status: ${error.status} message: ${error.responseText}`);
+                $(".loader").show();
+                alert(`There was an error Posting to /url status: ${error.status} message: ${error.responseText}`);
             }
         });
     });
